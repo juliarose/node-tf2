@@ -310,6 +310,14 @@ handlers[Language.GameServer_ResetIdentityResponse] = function(body) {
 	this.emit('resetIdentity', proto.game_server_identity_token_reset, proto.game_server_account_id, proto.game_server_identity_token);
 };
 
+handlers[Language.FulfillDynamicRecipeComponentResponse] = function(body) {
+	let unknown = body.readInt16(); // always 0 in my experience
+	let status = body.readUInt32(); // value from enum EGCMsgResponse
+	let id = body.readUint64().toString(); // get the id
+
+	this.emit('recipeResult', status, id !== '0' ? id : undefined);
+};
+
 // Spy vs. Engi War
 handlers[Language.War_GlobalStatsResponse] = function(body) {
 	let proto = decodeProto(Schema.CGCMsgGC_War_GlobalStatsResponse, body);

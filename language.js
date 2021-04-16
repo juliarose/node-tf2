@@ -11,7 +11,7 @@ module.exports = {
 	SO_CacheSubscriptionCheck: 27,
 	SO_CacheSubscriptionRefresh: 28,
 	SO_CacheSubscribedUpToDate: 29,
-
+	
 	// EGCItemMsg
 	Base: 1000,
 	SetSingleItemPosition: 1001,
@@ -163,6 +163,22 @@ module.exports = {
 	GCToGCGrantSelfMadeItemToAccount: 2555,
 	GCToGCThankedByNewUser: 2556,
 	ShuffleCrateContents: 2557,
+	QuestObjective_Progress: 2558, 
+	QuestCompleted: 2559, 
+	ApplyDuckToken: 2560, 
+	QuestComplete_Request: 2561,	
+	QuestObjective_PointsChange: 2562,	
+	QuestObjective_RequestLoanerItems: 2564,	
+	QuestObjective_RequestLoanerResponse: 2565,	
+	ApplyStrangeCountTransfer: 2566, 
+	CraftCollectionUpgrade: 2567, 
+	CraftHalloweenOffering: 2568, 
+	QuestDiscard_Request: 2569, 
+	RemoveGiftedBy: 2570, 
+	RemoveGiftedByResponse: 2571, 
+	RemoveFestivizer: 2572, 
+	RemoveFestivizerResponse: 2573, 
+	CraftCommonStatClock: 2574, 
 
 	// EGCBaseClientMsg
 	PingRequest: 3001,

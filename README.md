@@ -130,6 +130,67 @@ Unwraps a `gift`. The `gift` parameter should be the ID of a received wrapped gi
 
 Generically use an item. The `item` parameter should be an item ID.
 
+### removeItemName(item)
+
+Remove an item name. The `item` parameter should be an item ID.
+
+### removeItemDescription(item)
+
+Remove an item description. The `item` parameter should be an item ID.
+
+### removeFestivizer(itemID)
+
+Removes a festivizer from an item. The `itemID` parameter should be an item ID.
+
+### removePaint(itemID)
+
+Removes the paint from an item. The `itemID` parameter should be an item ID.
+
+### removeGiftedBy(itemID)
+
+Removes the "Gifted by" tag from an item. The `itemID` parameter should be an item ID.
+
+### removeCraftedBy(itemID)
+
+Removes the "Crafted by" tag from an item. The `itemID` parameter should be an item ID.
+
+### removeDecal(itemID)
+
+Removes the decal from an item. The `itemID` parameter should be an item ID.
+
+### removeKillstreak(itemID)
+
+Removes the killstreak from an item. The `itemID` parameter should be an item ID.
+
+### resetStrangeScores(itemID)
+
+Resets the strange score counters from an item. The `itemID` parameter should be an item ID.
+
+### removeStrangePart(itemID, scoreType)
+
+Removes a strange part from an item. The `itemID` parameter should be an item ID. The `scoreType` parameter should be a value from `kill_eater_score_types` from [WebAPI/GetSchema/v0001](https://wiki.teamfortress.com/wiki/WebAPI/GetSchema). 
+
+### fulfillRecipe(itemID, components)
+
+Applies ingredients to a recipe (fabricator or chemistry set). The `itemID` parameter should be an item ID. `components` is an array of ingredients to apply. Each ingredient in `components` is an object including a `subject_item_id` for the ID of the ingredient to apply, and an `attribute_index` for the defindex of the attribute to apply the ingredent to. The defindex for the attribute can be found using [WebAPI/GetPlayerItems](https://wiki.teamfortress.com/wiki/WebAPI/GetPlayerItems). Listen for `recipeResult` to get the result.
+
+```js
+tf2.fulfillRecipe('1', [
+	{
+		subject_item_id: '2',
+		attribute_index '2002'
+	},
+	{
+		subject_item_id: '3',
+		attribute_index '2002'
+	},
+	{
+		subject_item_id: '4',
+		attribute_index '2003'
+	}
+]);
+```
+
 ### sortBackpack(sortType)
 
 Sorts your backpack. `sortType` is the ID of the type of sort you want. I don't know which sort type is which code, so you'll have to figure that out for yourself.
@@ -281,6 +342,24 @@ Emitted when someone else thanks us and sends us Professor Speks (increments our
 ### professorSpeksSent
 
 Emitted when we successfully send Professor Speks to someone else.
+
+### recipeResult
+- `status` - The status of this request, from the values in the enum below.
+- `id` - The new ID for the recipe if the status is OK.
+
+Emitted when the GC sends us back the response of a `fulfillRecipe()` call. The `status` value will be from the following enum:
+
+	enum EGCMsgResponse {
+		k_EGCMsgResponseOK = 0;
+		k_EGCMsgResponseDenied = 1;
+		k_EGCMsgResponseServerError = 2;
+		k_EGCMsgResponseTimeout = 3;
+		k_EGCMsgResponseInvalid = 4;
+		k_EGCMsgResponseNoMatch = 5;
+		k_EGCMsgResponseUnknownError = 6;
+		k_EGCMsgResponseNotLoggedOn = 7;
+		k_EGCMsgFailedToCreate = 8;
+	}
 
 ### createIdentity
 - `status` - The status of this request, from the values in the enum below.
