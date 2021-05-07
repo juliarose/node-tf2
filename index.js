@@ -278,51 +278,51 @@ TeamFortress2.prototype.openCrate = function(keyID, crateID) {
 };
 
 TeamFortress2.prototype.removeItemName = function(item) {
-    let buffer = new ByteBuffer(12, ByteBuffer.LITTLE_ENDIAN);
-    buffer.writeUint64(coerceToLong(item));
-    buffer.writeUint32(0);
-    this._send(Language.RemoveItemName, null, buffer);
+	let buffer = new ByteBuffer(12, ByteBuffer.LITTLE_ENDIAN);
+	buffer.writeUint64(coerceToLong(item));
+	buffer.writeUint32(0);
+	this._send(Language.RemoveItemName, null, buffer);
 };
 
 TeamFortress2.prototype.removeItemDescription = function(item) {
-    let buffer = new ByteBuffer(12, ByteBuffer.LITTLE_ENDIAN);
-    buffer.writeUint64(coerceToLong(item));
-    buffer.writeUint32(1);
-    this._send(Language.RemoveItemName, null, buffer);
+	let buffer = new ByteBuffer(12, ByteBuffer.LITTLE_ENDIAN);
+	buffer.writeUint64(coerceToLong(item));
+	buffer.writeUint32(1);
+	this._send(Language.RemoveItemName, null, buffer);
 };
 
 TeamFortress2.prototype.removeFestivizer = function(itemID) {
-    this._send(Language.RemoveFestivizer, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
+	this._send(Language.RemoveFestivizer, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
 		"item_id": itemID
 	});
 };
 
 TeamFortress2.prototype.removePaint = function(itemID) {
-    this._send(Language.RemoveItemPaint, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
+	this._send(Language.RemoveItemPaint, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
 		"item_id": itemID
 	});
 };
 
 TeamFortress2.prototype.removeGiftedBy = function(itemID) {
-    this._send(Language.RemoveGiftedBy, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
+	this._send(Language.RemoveGiftedBy, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
 		"item_id": itemID
 	});
 };
 
 TeamFortress2.prototype.removeDecal = function(itemID) {
-    this._send(Language.RemoveCustomTexture, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
+	this._send(Language.RemoveCustomTexture, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
 		"item_id": itemID
 	});
 };
 
 TeamFortress2.prototype.removeCraftedBy = function(itemID) {
-    this._send(Language.RemoveMakersMark, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
+	this._send(Language.RemoveMakersMark, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
 		"item_id": itemID
 	});
 };
 
 TeamFortress2.prototype.removeKillstreak = function(itemID) {
-    this._send(Language.RemoveKillStreak, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
+	this._send(Language.RemoveKillStreak, Schema.CMsgGCRemoveCustomizationAttributeSimple, {
 		"item_id": itemID
 	});
 };
@@ -334,8 +334,8 @@ TeamFortress2.prototype.resetStrangeScores = function(itemID) {
 };
 
 TeamFortress2.prototype.removeStrangePart = function(itemID, scoreType) {
-    let proto = Schema.CMsgGCRemoveStrangePart;
-    let message = proto.fromObject({
+	let proto = Schema.CMsgGCRemoveStrangePart;
+	let message = proto.fromObject({
 		"item_id": itemID,
 		"strange_part_score_type": scoreType
 	});
@@ -343,8 +343,8 @@ TeamFortress2.prototype.removeStrangePart = function(itemID, scoreType) {
 };
 
 TeamFortress2.prototype.fulfillRecipe = function(itemID, components) {
-    let proto = Schema.CMsgFulfillDynamicRecipeComponent;
-    let message = proto.fromObject({
+	let proto = Schema.CMsgFulfillDynamicRecipeComponent;
+	let message = proto.fromObject({
 		"tool_item_id": itemID,
 		"consumption_components": components
 	});
